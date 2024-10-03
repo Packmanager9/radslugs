@@ -1,6 +1,8 @@
 
 // window.addEventListener('DOMContentLoaded', (event) => {
 
+let gamespeed = 1
+
     const squaretable = {} // this section of code is an optimization for use of the hypotenuse function on Line and LineOP objects
     for(let t = 0;t<10000000;t++){
         squaretable[`${t}`] = Math.sqrt(t)
@@ -1319,21 +1321,20 @@ let recording = 0
         
 //     video_recorder = new CanvasCaptureToWEBM(canvas, 5000000);
         canvas.style.background = style
-        window.setInterval(function () {
-            
-    if (keysPressed['.'] && recording == 0) {
-        rectime = Date.now()
-        recording = 1
-        video_recorder.record()
-    }
-    if (keysPressed['='] && recording == 1) {
-        rectime = Date.now() - rectime
-        recording = 0
-        video_recorder.stop()
-        video_recorder.download('dino.webm')
-    }
-            main()
-        },1)
+//         window.setInterval(function () {
+//             main()
+//         },1)
+function update() {
+for(let t= 0;t<gamespeed;t++){
+
+    smain();  // Call the main function
+}
+main();
+    requestAnimationFrame(update);  // Request the next frame
+}
+
+// Start the animation loop
+requestAnimationFrame(update);
         document.addEventListener('keydown', (event) => {
             keysPressed[event.key] = true;
             
@@ -4622,7 +4623,7 @@ let cf = 0
     
     function drawRotatedSprite(ctx, image, x, y, width, height, angle) {
     // Save the current canvas state
-    ctx.save();
+//     ctx.save();
 
     // Move the canvas origin to the center of the sprite
     ctx.translate(x + width / 2, y + height / 2);
@@ -4631,15 +4632,17 @@ let cf = 0
     ctx.rotate(angle);
 
     // Draw the sprite, adjusting for the translation
-    ctx.drawImage(image,0, 0, 64,64, -width / 2, -height / 2, width, height);
+    ctx.drawImage(image,0, 0, 40,40, -width / 2, -height / 2, width, height);
 
+    ctx.rotate(-angle);
+    ctx.translate(-(x + width / 2), -(y + height / 2));
     // Restore the canvas state (undo the translation and rotation)
-    ctx.restore();
+//     ctx.restore();
 }
 
 
-let shippy = {}
-shippy.tilt = 0
+
+// shippy.tilt = 0
     let dot = new Circle(360,360, 10, "white")
 let link = new LineOP(TIP_engine, dot)
 let la = 0
@@ -5392,6 +5395,8 @@ this.link = new LineOP(this.p1, this.p2);
         constructor(angle, length, guy){
             this.angle = angle
             this.length = length
+            this.length = Math.min(19, this.length) //canvas size
+            length = this.length
             this.guy = guy
             this.p1 = new Point(this.guy.body.x+ ((Math.cos(angle)*length)) , this.guy.body.y+ ((Math.sin(angle)*length)))
             this.link = new LineOP(this.p1, this.guy.body)
@@ -5402,6 +5407,8 @@ this.link = new LineOP(this.p1, this.p2);
             this.angle = angle
             this.length = length
             this.guy = guy
+            this.length = Math.min(19, this.length)//canvas size
+            length = this.length
             this.p1 = new Point(this.guy.body.x+ ((Math.cos(angle)*length)) , this.guy.body.y+ ((Math.sin(angle)*length)))
             this.link = new LineOP(this.p1, this.guy.body)
         }
@@ -5424,7 +5431,7 @@ this.link = new LineOP(this.p1, this.p2);
             this.g2 = 128
             this.b2 = 128
             this.angle = Math.random()*2
-            this.body = new Circle(Math.random()*1280, Math.random()*1280, 4, `rgb(${this.r*1},${this.g*1},${this.b*1})`)
+            this.body = new Circle(Math.random()*1280, Math.random()*1280, 5, `rgb(${this.r*1},${this.g*1},${this.b*1})`)
             this.spinpattern = []
             let z = 0
             for(let t =0;t<Math.PI*4;t+=((Math.PI*2)/64)){
@@ -5436,8 +5443,8 @@ this.link = new LineOP(this.p1, this.p2);
             }
             this.spinstep = 10
             this.canvas = document.createElement('canvas');
-            this.canvas.width = 64
-            this.canvas.height = 64
+            this.canvas.width = 40
+            this.canvas.height = 40
             this.canvas_context = this.canvas.getContext('2d');
             this.spines = []
             this.armor = []
@@ -5455,13 +5462,13 @@ document.body.appendChild(this.canvas);
 
 
 
-            this.birthCost = 36 // 3 //10
+            this.birthCost = 40 // 3 //10 //36
             this.birthCost += this.spinrate*5
             this.birthCost += this.maxhealth*3
             this.birthCost += this.spinpattern.length/10000
             this.birthCost += this.speed*5
             this.birthCost += (this.body.radius*3) // r*10 // *2 //r
-            this.sp =  new Circle(32,32, this.body.radius, `rgb(${this.r*1},${this.g*1},${this.b*1})`)
+            this.sp =  new Circle(20,20, this.body.radius, `rgb(${this.r*1},${this.g*1},${this.b*1})`)
             this.canvas_context.fillStyle = `rgb(${this.r*1},${this.g*1},${this.b*1})`
             this.canvas_context.strokeStyle = `rgb(${this.r2*1},${this.g2*1},${this.b2*1})`
             this.canvas_context.arc(this.sp.x, this.sp.y, this.sp.radius, 0, Math.PI*2, true)
@@ -5567,12 +5574,12 @@ document.body.appendChild(this.canvas);
                 this.construct()
                 this.made = 1
             }
-            drawRotatedSprite(canvas_context, this.canvas, this.body.x-32, this.body.y-32, 64,64, this.angle)
+            drawRotatedSprite(canvas_context, this.canvas, this.body.x-20, this.body.y-20,40,40, this.angle)
 
             
         }
         seekFood(){
-            
+            if(this.age%1 ==0){ //throttle
                 this.l = new LineOP(this.body, this.body)
             let p = new Point(this.body.x, this.body.y)
                 let l = new LineOP(this.body, this.body, "red" ,1)
@@ -5604,11 +5611,11 @@ document.body.appendChild(this.canvas);
                 p.x += Math.cos(this.spines[r].angle+this.angle)*this.spines[r].length
                 p.y += Math.sin(this.spines[r].angle+this.angle)*this.spines[r].length
                 l.target = p
-                    if(!this.children.includes(animals[k].id) && this.health >= animals[k].health && this.spines.length > 0){
+                    if(!this.children.includes(animals[k].id) && this.health >= animals[k].health && this.spines.length > animals[k].spines.length){
 //                         //console.log("find") 
                       if(circleLine(l, animals[k].body)==1){
                         //console.log("this")
-                     this.angle = easeAngle(this.angle, (new LineOP(this.body, animals[k].body)).angle(), this.spinrate)
+                     this.angle = easeAngle(this.angle, (new LineOP(animals[k].body, this.body )).angle(), this.spinrate)  //was flipped?
 //                      if(this.body.doesPerimeterTouch(animals[k].body)){
                         this.l.target = animals[k].body
                         if(this.l.hypotenuse() < this.body.radius+animals[k].body){
@@ -5632,8 +5639,8 @@ document.body.appendChild(this.canvas);
                                             }
                                               animals[k].health--
                                               //console.log(this, animals[k])
-                                              animals[k].body.x  += Math.cos(this.angle)*this.speed
-                                              animals[k].body.y  += Math.sin(this.angle)*this.speed
+                                              animals[k].body.x  += Math.cos(this.angle)*this.speed*2
+                                              animals[k].body.y  += Math.sin(this.angle)*this.speed*2
                                               wet = 1
                                                      if(animals[k].health <= 0){
 
@@ -5650,8 +5657,8 @@ document.body.appendChild(this.canvas);
                               }else{
                                 animals[k].health--
                                               //console.log(this, animals[k])
-                                animals[k].body.x  += Math.cos(this.angle)*this.speed
-                                animals[k].body.y  += Math.sin(this.angle)*this.speed
+                                animals[k].body.x  += Math.cos(this.angle)*this.speed*2
+                                animals[k].body.y  += Math.sin(this.angle)*this.speed*2
                                 if(animals[k].health <= 0){
 
                                  this.calories += Math.max(animals[k].calories-700, 0) + 50
@@ -5712,8 +5719,8 @@ document.body.appendChild(this.canvas);
                              animals[k].health--
                                //console.log("snap")
                                               //console.log(this, animals[k])
-                                animals[k].body.x  += Math.cos(this.angle)*this.speed
-                                animals[k].body.y  += Math.sin(this.angle)*this.speed
+                                animals[k].body.x  += Math.cos(this.angle)*this.speed*2
+                                animals[k].body.y  += Math.sin(this.angle)*this.speed*2
                                        if(animals[k].health <= 0){
 
                               //console.log("dead")
@@ -5745,6 +5752,7 @@ document.body.appendChild(this.canvas);
                       }
                 }
                 
+                }
             if(this.body.x > 1280){
                 this.angle = Math.PI*1
                 this.body.x = 1280
@@ -5799,11 +5807,11 @@ document.body.appendChild(this.canvas);
             clone.spincycleson = this.spincycleson
             clone.spincyclesoff = this.spincyclesoff
                 if(Math.random() <.05){
-                    clone.spincycleson += this.umts()
+                    clone.spincycleson += (this.umte())
                     clone.spincycleson = Math.round(clone.spincycleson)
                 }
                 if(Math.random() <.05){
-                    clone.spincyclesoff += this.umts()
+                    clone.spincyclesoff += (this.umte())
                     clone.spincyclesoff = Math.round(clone.spincyclesoff)
                 }
             
@@ -5823,6 +5831,7 @@ document.body.appendChild(this.canvas);
             clone.spinrate = Math.max(0,clone.spinrate)
             clone.body.radius = this.body.radius +  this.umts()
             clone.body.radius = Math.max(.1,clone.body.radius)
+            clone.body.radius = Math.min(19,clone.body.radius)
             clone.body.x = this.body.x
             clone.body.y = this.body.y
             clone.body.color = `rgb(${clone.g*1},${clone.b*1},${clone.r*1})`
@@ -5833,7 +5842,7 @@ document.body.appendChild(this.canvas);
             for(let t = 0;t<this.armor.length;t++){
                 clone.armor.push(new Armor(this.armor[t].angle, clone))
             if(Math.random() < .05){
-                clone.armor[t].angle = clone.armor[t].angle + ((Math.random()-.5)*.1)
+                clone.armor[t].angle = clone.armor[t].angle + this.umtp()
             }
             }
             if(Math.random() < .05){
@@ -5854,11 +5863,11 @@ document.body.appendChild(this.canvas);
                         clone.spines[t].length += this.umte()
                     }
                        if(Math.random() < .05){
-                clone.spines[t].angle = clone.spines[t].angle + ((Math.random()-.5)*.1)
+                clone.spines[t].angle = clone.spines[t].angle + this.umtp()
             }
             }
             if(Math.random() < .05){
-                clone.spines.push(new Spine(Math.random()*Math.PI*2, clone.body.radius + (Math.random()-.5)+4, clone))
+                clone.spines.push(new Spine(Math.random()*Math.PI*2, clone.body.radius + (Math.random()-.5)+1, clone))
                  ////console.log("s")
             }
             if(Math.random() < .05){
@@ -5874,11 +5883,11 @@ document.body.appendChild(this.canvas);
                         clone.eyes[t].length += this.umte()
                     }
                        if(Math.random() < .05){
-                clone.eyes[t].angle = clone.eyes[t].angle + ((Math.random()-.5)*.1)
+                clone.eyes[t].angle = clone.eyes[t].angle + this.umtp()
             }
             }
             if(Math.random() < .05){
-                clone.eyes.push(new Eye(Math.random()*Math.PI*2, clone.body.radius + (Math.random()-.5) + 8, clone))
+                clone.eyes.push(new Eye(Math.random()*Math.PI*2, clone.body.radius + (Math.random()-.5) + 2, clone))
                  ////console.log("e")
             }
             if(Math.random() < .05){
@@ -5906,6 +5915,10 @@ document.body.appendChild(this.canvas);
             if(this.calories <= 0){
                 this.marked = 1
             }
+        }
+        sdraw(){
+            
+            this.body.draw()
         }
     }
     
@@ -5961,42 +5974,25 @@ document.body.appendChild(this.canvas);
     return false;
 }
 
+function smain(){
 
-let drumz = new Audio()
-drumz.volume = .5
-drumz.src = "drumz.mp3"
-
-let mute = 0
-    function main() {    
-    if(mute == 0){
-    drumz.play()
-        
-    }else{
-        
-    drumz.pause()
-    }
-        if(keysPressed['m']){
-            drumz.pause()
-            mute = 1
-        }
-        if(keysPressed['p']){
-            drumz.play()
-            mute = 0
-        }
     foodtime++
-    if(foodtime > 35){ // 40
+    
+    if(foodtime > 25){ // 40
         foodtime = 0
         let f = new Food()
         food.push(f)
     }
     canvas_context.fillStyle = "#00000008"
+// canvas_context.fillStyle = "#000000"
+
     if(keysPressed['v']){canvas_context.fillStyle = "#000000"
         
     }
     canvas_context.fillRect(0, 0, canvas.width, canvas.height)
     
     for(let t= 0;t<food.length;t++){
-        food[t].draw()
+        food[t].sdraw()
     }
     for(let t= food.length-1;t>=0;t--){
         if(food[t].marked == 1){
@@ -6016,10 +6012,55 @@ let mute = 0
     for(let t= 0;t<animals.length;t++){
         animals[t].live()
     }
-    for(let t= 0;t<animals.length;t++){
+
+}
+
+let drumz = new Audio()
+drumz.volume = .5
+drumz.src = "drumz.mp3"
+
+let mute = 0
+    function main() {    
+    if(mute == 0){
+    drumz.play()
+        
+    }else{
+        
+    drumz.pause()
+    }
+    
+        if(keysPressed['o']){
+           
+            keysPressed['o'] = false
+            gamespeed++
+            
+        }
+        if(keysPressed['p']){
+            gamespeed--
+            keysPressed['p'] = false
+            if(gamespeed<0){
+                gamespeed= 0
+            }
+        }
+        if(keysPressed['m']){
+            drumz.pause()
+            mute = 1
+        }
+        if(keysPressed['p']){
+            drumz.play()
+            mute = 0
+        }
+        
+    for(let t= 0;t<food.length;t++){
+        food[t].draw()
+    }
+            for(let t= 0;t<animals.length;t++){
         animals[t].draw()
     }
     return
+    
+    
+    
     swap++
     
     if(swap%2 == 0){
