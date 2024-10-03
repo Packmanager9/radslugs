@@ -62,7 +62,7 @@
             }
             gamepadAPI.axesStatus = axes;// assign received values
             gamepadAPI.buttonsStatus = pressed;
-            // ////console.log(pressed); // return buttons for debugging purposes
+            // //////console.log(pressed); // return buttons for debugging purposes
             return pressed;
         },
         buttonPressed: function (button, hold) {
@@ -166,7 +166,7 @@ let recording = 0
 //         const name = input || 'video_out.webm'
 //         const blob = new Blob(blobCaptures, { type: outputFormat, duration: rectime })
 //         blob.duration = rectime
-//         ////////////////////console.log(blob)
+//         //////////////////////console.log(blob)
 //         const url = window.URL.createObjectURL(blob)
 //         const storageElement = document.createElement('a')
 //         storageElement.style.display = 'none'
@@ -484,7 +484,7 @@ let recording = 0
                 canvas_context.fill()
                 canvas_context.stroke();
             } else {
-                ////console.log("The circle is below a radius of 0, and has not been drawn. The circle is:", this)
+                //////console.log("The circle is below a radius of 0, and has not been drawn. The circle is:", this)
             }
         }
         move() {
@@ -677,7 +677,7 @@ let recording = 0
 //                 canvas_context.fill()
                 canvas_context.stroke();
             } else {
-                ////console.log("The circle is below a radius of 0, and has not been drawn. The circle is:", this)
+                //////console.log("The circle is below a radius of 0, and has not been drawn. The circle is:", this)
             }
         }
         move() {
@@ -1183,7 +1183,7 @@ let recording = 0
                 }
             }
 
-            ////console.log(this)
+            //////console.log(this)
 
             // this.spring = new Spring(x, y, radius, color, this.pin, memberLength, gravity)
             // this.springs.push(this.spring)
@@ -1403,7 +1403,7 @@ let recording = 0
         }
     }
     function gamepad_control(object, speed = 1) { // basic control for objects using the controler
-//         ////console.log(gamepadAPI.axesStatus[1]*gamepadAPI.axesStatus[0]) //debugging
+//         //////console.log(gamepadAPI.axesStatus[1]*gamepadAPI.axesStatus[0]) //debugging
         if (typeof object.body != 'undefined') {
             if(typeof (gamepadAPI.axesStatus[1]) != 'undefined'){
                 if(typeof (gamepadAPI.axesStatus[0]) != 'undefined'){
@@ -1616,7 +1616,7 @@ let recording = 0
     function calculateSilverWeight(x,y,z){
         let vol = x*y*z
         let mass = vol*10.49
-        ////console.log(vol+" cubic centimeters", mass+ " grams", (mass/28.3495)+"oz")
+        //////console.log(vol+" cubic centimeters", mass+ " grams", (mass/28.3495)+"oz")
     }
 
     let x = 0
@@ -2026,7 +2026,7 @@ let pix = canvas_context.getImageData(0,0,720,720)
                     return
                 }
             }
-            ////console.log(this.rolled)
+            //////console.log(this.rolled)
              if(this.rolled == 1){
                 if(this.body.isPointInside(point)){
                 hand.dieSel = this
@@ -3018,7 +3018,7 @@ destinationImageData = canvas_context.getImageData(0, 0, canvas.width, canvas.he
                 let n = this.neighbors(this.grid[t][k])
                 let f = [...n]
                 
-//                 ////console.log(n)
+//                 //////console.log(n)
                 for(let s = 0;s<n.length;s++){
                     let g = this.neighbors(n[s])
                     for(let x = 0;x<g.length;x++){
@@ -3030,7 +3030,7 @@ destinationImageData = canvas_context.getImageData(0, 0, canvas.width, canvas.he
                     }
                 }
                 n = [...f]
-//                 ////console.log(n)
+//                 //////console.log(n)
                 let w = 0
                 for(let s = 0;s<n.length;s++){
                     if(n[s].castle == 1 || this.grid[t][k].castle == 1){
@@ -3319,7 +3319,7 @@ destinationImageData = canvas_context.getImageData(0, 0, canvas.width, canvas.he
                             cet++
                         }
                     }
-                    //console.log(g,cet)
+                    ////console.log(g,cet)
                     if(cet == g.length && g.length > 0){
                         if(Math.random() < .1){
                             
@@ -3735,7 +3735,7 @@ let cf = 0
             
                     }
                 let sd = Math.floor(Math.random()*f.length)
-                //console.log(f,sd)
+                ////console.log(f,sd)
                 this.point.x = f[sd].x + 10
                 this.point.y = f[sd].y + 10
                 this.card = f[sd].t
@@ -3874,10 +3874,10 @@ let cf = 0
             for(let t= 0;t<this.grid.length;t++){
             for(let k= 0;k<this.grid[t].length;k++){
                 fet+=this.grid[t][k].redarmy.length
-                ////console.log(fet,t,k)
+                //////console.log(fet,t,k)
             }
             } 
-            ////console.log(fet)
+            //////console.log(fet)
                             if(fet == 0){
                                 
                                   this.submode = -1
@@ -3892,11 +3892,11 @@ let cf = 0
             for(let t= 0;t<this.grid.length;t++){
             for(let k= 0;k<this.grid[t].length;k++){
                 fet+=this.grid[t][k].greenarmy.length
-                ////console.log(fet,t,k)
+                //////console.log(fet,t,k)
             }
             }
             
-            ////console.log(fet)
+            //////console.log(fet)
                             if(fet == 0){
                                 
                                   this.submode = -1
@@ -3967,7 +3967,7 @@ let cf = 0
                                         //combat
                                     }
                                 }
-                                ////console.log("l", wtt, this.grid[t][k])
+                                //////console.log("l", wtt, this.grid[t][k])
 
                                 if(wtt == 1){
                                         this.combat = 1
@@ -4015,8 +4015,8 @@ let cf = 0
                                         //combat
                                     }
                                 }
-                                ////console.log("l")
-                                ////console.log("l", wtt, this.grid[t][k])
+                                //////console.log("l")
+                                //////console.log("l", wtt, this.grid[t][k])
                                 if(wtt == 1){
                                         this.combat = 1
                                         ships = []
@@ -4059,15 +4059,15 @@ let cf = 0
                                   return
                 }
             }
-//             ////console.log(this.submode)
+//             //////console.log(this.submode)
             if(this.submode == 2){
                 
                 let wet = 0
-//             ////console.log(this.submode)
+//             //////console.log(this.submode)
             for(let t= 0;t<this.grid.length;t++){
-//             ////console.log(this.submode)
+//             //////console.log(this.submode)
             for(let k= 0;k<this.grid[t].length;k++){
-//             ////console.log(this.submode)
+//             //////console.log(this.submode)
                 if(this.grid[t][k].owner == this.turn){
                         if(this.turn == 0){ 
                         if(this.grid[t][k].castle == 1){
@@ -4081,7 +4081,7 @@ let cf = 0
                             if( this.grid[t][k].improvements[r] == 2){
                                 
                                   this.submode = -1
-                                //console.log(this)
+                                ////console.log(this)
                             this.grid[t][k].redarmy.push(new Giy(0))
                             }
                         } 
@@ -4098,7 +4098,7 @@ let cf = 0
                         for(let r = 0;r<this.grid[t][k].improvements.length;r++){
                             if( this.grid[t][k].improvements[r] == 2){
                                   this.submode = -1
-                                //console.log(this)
+                                ////console.log(this)
                             this.grid[t][k].greenarmy.push(new Giy(0))
                             }
                         }
@@ -4126,7 +4126,7 @@ let cf = 0
                 let wet = 0
                 for(let t = 0;t<this.linear.length;t++){
                     if(this.linear[t].owner == this.turn){
-                        //console.log(this.players[this.turn].gid)
+                        ////console.log(this.players[this.turn].gid)
                         this.linear[t].account(this.players[this.turn].gid)
                                   this.submode = -1
                                   wet = 1
@@ -4784,7 +4784,7 @@ let la = 0
         this.tilt = (Math.abs(this.tilt)-1)*Math.sign(this.tilt)
     }
     this.a =  easeAngle(this.a,a, .15)
-    ////console.log(this.a)
+    //////console.log(this.a)
     for(let m = 0;m<2;m++){
         
     this.x += Math.cos(this.a)*2.5
@@ -5053,7 +5053,7 @@ class Planet {
                 this.rect.draw()
             }else{
                 if(this.spinout != 1){
-                    //console.log(this)
+                    ////console.log(this)
                     for(let t = 0;t<this.world.length;t++){
                        for(let k = 0;k<this.world.length;k++){
                            if(this.world[t][k].calced == 0){
@@ -5132,7 +5132,7 @@ class Planet {
             while(this.rock+this.scissors+this.paper < 2){
                 this.j++
                 if(this.j>100){
-                    //console.log(this.rock, this.scissors, this.paper)
+                    ////console.log(this.rock, this.scissors, this.paper)
                     break
                 }
                 this.rock*=1.02
@@ -5144,28 +5144,28 @@ class Planet {
             }
             while(this.rock > 1){     this.j++
                 if(this.j>1000){
-                    //console.log("g")
+                    ////console.log("g")
                     break
                 }
                 this.rock/=1.01
             }
             while(this.paper > 1){     this.j++
                 if(this.j>10000){
-                    //console.log("g")
+                    ////console.log("g")
                     break
                 }
                 this.paper/=1.01
             }
             while(this.scissors > 1){     this.j++
                 if(this.j>100000){
-                    //console.log("g")
+                    ////console.log("g")
                     break
                 }
                 this.scissors/=1.01
             }
             while(this.rock+this.scissors+this.paper > 2){     this.j++
                 if(this.j>1000000){
-                    //console.log("g")
+                    ////console.log("g")
                     break
                 }
                 this.rock/=1.01
@@ -5247,7 +5247,7 @@ class Planet {
         draw(t){
             this.rect = new Rectangle(10+((t%size)*2), 2+(Math.floor(t/size)*2), 2, 2, `rgb(${this.rock*255},${this.paper*255},${this.scissors*255})`)
             this.rect.draw()
-//             //console.log(t, this.rect)
+//             ////console.log(t, this.rect)
 this.normalize()
         }
     }
@@ -5457,7 +5457,7 @@ document.body.appendChild(this.canvas);
 
             this.birthCost = 36 // 3 //10
             this.birthCost += this.spinrate*5
-            this.birthCost += this.maxhealth*2
+            this.birthCost += this.maxhealth*3
             this.birthCost += this.spinpattern.length/10000
             this.birthCost += this.speed*5
             this.birthCost += (this.body.radius*3) // r*10 // *2 //r
@@ -5467,7 +5467,7 @@ document.body.appendChild(this.canvas);
             this.canvas_context.arc(this.sp.x, this.sp.y, this.sp.radius, 0, Math.PI*2, true)
             this.canvas_context.fill()
             for(let t = 0;t<this.armor.length;t++){
-                //console.log("D")
+                ////console.log("D")
             this.canvas_context.strokeStyle = `rgb(${this.g2*1},${this.b2*1},${this.r2*1})`
                 let a = new Armor(this.armor[t].angle, {body:this.sp})
             this.canvas_context.lineWidth = 2
@@ -5478,7 +5478,7 @@ document.body.appendChild(this.canvas);
              this.birthCost++
             }
             for(let t = 0;t<this.spines.length;t++){
-                //console.log("S")
+                ////console.log("S")
             this.canvas_context.strokeStyle = `rgb(${this.r2*1},${this.g2*1},${this.b2*1})`
                 let a = new Spine(this.spines[t].angle, this.spines[t].length, {body:this.sp})
             this.canvas_context.lineWidth = 1
@@ -5500,7 +5500,7 @@ document.body.appendChild(this.canvas);
              this.birthCost+=(a.length/10)
             }
             for(let t = 0;t<this.eyes.length;t++){
-                //console.log("S")
+                ////console.log("S")
             this.canvas_context.strokeStyle = `rgb(${this.b2*1},${this.r2*1},${this.g2*1})`
                 let a = new Eye(this.eyes[t].angle, this.eyes[t].length, {body:this.sp})
              this.canvas_context.lineWidth = 1
@@ -5509,7 +5509,7 @@ document.body.appendChild(this.canvas);
              this.canvas_context.lineTo(a.link.target.x, a.link.target.y)
              this.canvas_context.stroke()
              this.birthCost++
-             this.birthCost+=(a.length/10)
+             this.birthCost+=(a.length/100)
             }
             
             
@@ -5541,7 +5541,7 @@ document.body.appendChild(this.canvas);
             }
             this.seekFood()
             if(this.calories >= 750+this.birthCost){
-                console.log(this.birthCost)
+                //console.log(this.birthCost)
                 this.birth()
                 this.calories = 700
             }
@@ -5597,17 +5597,25 @@ document.body.appendChild(this.canvas);
                   }
                 }
                 if(this.spines.length > 0){
-                for(let k = 0;k<animals.length;k++){
+                for(let k = 0;k<animals.length;k++){   
+                for(let r = 0;r<this.spines.length;r++){
+                               p.x = this.body.x
+                p.y = this.body.y
+                p.x += Math.cos(this.spines[r].angle+this.angle)*this.spines[r].length
+                p.y += Math.sin(this.spines[r].angle+this.angle)*this.spines[r].length
+                l.target = p
                     if(!this.children.includes(animals[k].id) && this.health >= animals[k].health && this.spines.length > 0){
+//                         //console.log("find") 
                       if(circleLine(l, animals[k].body)==1){
+                        //console.log("this")
                      this.angle = easeAngle(this.angle, (new LineOP(this.body, animals[k].body)).angle(), this.spinrate)
 //                      if(this.body.doesPerimeterTouch(animals[k].body)){
                         this.l.target = animals[k].body
                         if(this.l.hypotenuse() < this.body.radius+animals[k].body){
                          if(animals[k].health >= 1){
-                              console.log("one")
+                              //console.log("one")
                              if(animals[k].armor.length > 0){
-                              console.log("two")
+                              //console.log("two")
                                     let wet = 0
                                     for(let a = 0;a<animals[k].armor.length;a++){
                                     for(let s = 0;s<this.spines.length;s++){
@@ -5623,17 +5631,17 @@ document.body.appendChild(this.canvas);
                                                 continue
                                             }
                                               animals[k].health--
-                                              console.log(this, animals[k])
+                                              //console.log(this, animals[k])
                                               animals[k].body.x  += Math.cos(this.angle)*this.speed
                                               animals[k].body.y  += Math.sin(this.angle)*this.speed
                                               wet = 1
                                                      if(animals[k].health <= 0){
 
+                                 this.calories += Math.max(animals[k].calories-700, 0) + 50
                               animals[k].marked = 1
                               animals[k].calories = -1
-                              console.log("dead")
+                              //console.log("dead")
                               
-                                 this.calories += animals[k].calories
                                 }
                                         }
                                     }
@@ -5641,24 +5649,24 @@ document.body.appendChild(this.canvas);
     
                               }else{
                                 animals[k].health--
-                                              console.log(this, animals[k])
+                                              //console.log(this, animals[k])
                                 animals[k].body.x  += Math.cos(this.angle)*this.speed
                                 animals[k].body.y  += Math.sin(this.angle)*this.speed
                                 if(animals[k].health <= 0){
 
+                                 this.calories += Math.max(animals[k].calories-700, 0) + 50
                               animals[k].marked = 1
                               animals[k].calories = -1
-                              console.log("dead")
+                              //console.log("dead")
                               
-                                 this.calories += animals[k].calories
                                 }
                               }
                           }else{
+                                 this.calories += Math.max(animals[k].calories-700, 0) + 50
                               animals[k].marked = 1
                               animals[k].calories = -1
-                              console.log("dead")
+                              //console.log("dead")
                               
-                                 this.calories += animals[k].calories
                               
                             }
                       }
@@ -5677,38 +5685,51 @@ document.body.appendChild(this.canvas);
                       
                       
                     } 
+                    
+                    
+                    
                   }
+                }
                 }
             }
             
                 if(this.spines.length > 0){
                 for(let k = 0;k<animals.length;k++){
                     if(!this.children.includes(animals[k].id) && this.health >= animals[k].health){
-//                                               console.log("tap")
+//                                               //console.log("tap")
+                        for(let r = 0;r<this.spines.length;r++){
+                               p.x = this.body.x
+                p.y = this.body.y
+                p.x += Math.cos(this.spines[r].angle+this.angle)*this.spines[r].length
+                p.y += Math.sin(this.spines[r].angle+this.angle)*this.spines[r].length
+                l.target = p
                       if(circleLine(l, animals[k].body)==1){
-                              console.log("poke")
-                        this.l.target = animals[k].body
-                        if(this.l.hypotenuse() < this.body.radius+animals[k].body){
-                              console.log("snap")
+                              //console.log("poke")
+//                         this.l.target = animals[k].body
+//                         if(this.l.hypotenuse() < this.body.radius+animals[k].body){
+//                               //console.log("snap")
                          if(animals[k].health >= 1){
                              animals[k].health--
-                                              console.log(this, animals[k])
+                               //console.log("snap")
+                                              //console.log(this, animals[k])
                                 animals[k].body.x  += Math.cos(this.angle)*this.speed
                                 animals[k].body.y  += Math.sin(this.angle)*this.speed
                                        if(animals[k].health <= 0){
 
+                              //console.log("dead")
+                                 this.calories += Math.max(animals[k].calories-700, 0) + 50
                               animals[k].marked = 1
                               animals[k].calories = -1
                               
-                                 this.calories += animals[k].calories
                                 }
                           }else{
-                              console.log("dead")
+                                 this.calories += Math.max(animals[k].calories-700, 0) + 50
+                              //console.log("dead")
                               animals[k].marked = 1
                               animals[k].calories = -1
-                                 this.calories += animals[k].calories
                               
                             }
+//                       }
                       }
                       }
                   }
@@ -5720,7 +5741,7 @@ document.body.appendChild(this.canvas);
                         if(this.l.hypotenuse() < this.body.radius+food[k].body.radius){
                          food[k].marked = 1
                          this.calories += food[k].calories
-//                          //console.log("G")
+//                          ////console.log("G")
                       }
                 }
                 
@@ -5748,6 +5769,9 @@ document.body.appendChild(this.canvas);
         }
         umts(){
             return (Math.random()-.5)
+        }
+        umte(){
+            return (Math.random()-.5)*2
         }
         umtp(){
             return (Math.random()-.5)/10
@@ -5815,7 +5839,7 @@ document.body.appendChild(this.canvas);
             if(Math.random() < .05){
                 clone.armor.push(new Armor(Math.random()*Math.PI*2, clone))
                 
-                 //console.log("a")
+                 ////console.log("a")
             }
             if(Math.random() < .05){
                 clone.armor.splice(Math.floor(Math.random()*clone.armor.length),1)
@@ -5827,7 +5851,7 @@ document.body.appendChild(this.canvas);
             for(let t = 0;t<this.spines.length;t++){
                 clone.spines.push(new Spine(this.spines[t].angle,this.spines[t].length, clone))
                     if(Math.random() < .05){
-                        clone.spines[t].length += this.umts()
+                        clone.spines[t].length += this.umte()
                     }
                        if(Math.random() < .05){
                 clone.spines[t].angle = clone.spines[t].angle + ((Math.random()-.5)*.1)
@@ -5835,7 +5859,7 @@ document.body.appendChild(this.canvas);
             }
             if(Math.random() < .05){
                 clone.spines.push(new Spine(Math.random()*Math.PI*2, clone.body.radius + (Math.random()-.5)+4, clone))
-                 //console.log("s")
+                 ////console.log("s")
             }
             if(Math.random() < .05){
                 clone.spines.splice(Math.floor(Math.random()*clone.spines.length),1)
@@ -5847,7 +5871,7 @@ document.body.appendChild(this.canvas);
             for(let t = 0;t<this.eyes.length;t++){
                 clone.eyes.push(new Eye(this.eyes[t].angle, this.eyes[t].length, clone))
                     if(Math.random() < .05){
-                        clone.eyes[t].length += this.umts()
+                        clone.eyes[t].length += this.umte()
                     }
                        if(Math.random() < .05){
                 clone.eyes[t].angle = clone.eyes[t].angle + ((Math.random()-.5)*.1)
@@ -5855,7 +5879,7 @@ document.body.appendChild(this.canvas);
             }
             if(Math.random() < .05){
                 clone.eyes.push(new Eye(Math.random()*Math.PI*2, clone.body.radius + (Math.random()-.5) + 8, clone))
-                 //console.log("e")
+                 ////console.log("e")
             }
             if(Math.random() < .05){
                 clone.eyes.splice(Math.floor(Math.random()*clone.eyes.length),1)
@@ -5872,7 +5896,7 @@ document.body.appendChild(this.canvas);
     
     class Food{
         constructor(){
-            this.calories = 400
+            this.calories = 350
             this.body = new Circle(Math.random()*1280, Math.random()*1280, 5, "white")
         }
         draw(){
@@ -5976,7 +6000,7 @@ let mute = 0
     }
     for(let t= food.length-1;t>=0;t--){
         if(food[t].marked == 1){
-//             //console.log("f")
+//             ////console.log("f")
             food.splice(t,1)
         }
     }
@@ -6059,14 +6083,14 @@ let mute = 0
     if(start == 2){
         
         wins[0]++
-        //console.log(wins, "Red/Green")
+        ////console.log(wins, "Red/Green")
             canvas_context.fillText("You are victorious!", 100, 300)
             start = 1
             avey = new Avey()
         return
     }else if(start == 3){
         wins[1]++
-        //console.log(wins, "Red/Green")
+        ////console.log(wins, "Red/Green")
             canvas_context.fillText("You have been defeated!", 100, 300)
             start = 1
             avey = new Avey()
@@ -6125,14 +6149,14 @@ let mute = 0
                 }
           }
           if(avey.combat == 0){
-              //console.log(avey, ships)
+              ////console.log(avey, ships)
               if(avey.markend == 1){
-              //console.log(avey.markend)
+              ////console.log(avey.markend)
                   avey.markend = 0
                   if(ships.length>0){
                       
                   if(ships[0].owner == 0){
-              //console.log(avey.contest)
+              ////console.log(avey.contest)
                         avey.contest.greenarmy = []
                         avey.contest.redarmy = []
                       for(let t =0;t<ships.length;t++){
@@ -6145,7 +6169,7 @@ let mute = 0
                         ships = []
                   
                     }else{
-              //console.log(avey.contest)
+              ////console.log(avey.contest)
                         avey.contest.redarmy = []
                         avey.contest.greenarmy = []
                       for(let t =0;t<ships.length;t++){
@@ -6187,7 +6211,7 @@ let mute = 0
        for(let t = 0;t<ships.length;t++){
            e+= ships[t].owner
           }
-          ////console.log(e, ships)
+          //////console.log(e, ships)
           if(e == 0 || e == ships.length){
 //               if(avey.combattimer <= 0){
               avey.combat = 0
@@ -6281,7 +6305,7 @@ let mute = 0
     }
     let dt = new Point(500+dtx, 100)
     return
-//     ////console.log(hand)
+//     //////console.log(hand)
         hand.draw()
 //     nock.draw()
 
@@ -6395,7 +6419,7 @@ canvas_context.fill();
 //             l.target = p
 // //             if(Math.random() < .001){
 // //                 
-// //             ////console.log(l)
+// //             //////console.log(l)
 // //             }
 //             let a = l.angle()-Math.PI
 //             let h = l.hypotenuse()
@@ -6406,7 +6430,7 @@ canvas_context.fill();
 //             if(lf.isPointInside(k)){
 //                             let pt = tout(Math.floor(k.x),Math.floor(k.y))
 //                                     if(Math.random() < .001){ 
-// //             ////console.log(t,pt)
+// //             //////console.log(t,pt)
 //             }
 //             if(pt%4 == 0){
 //                 
