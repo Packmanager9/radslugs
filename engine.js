@@ -5482,7 +5482,7 @@ document.body.appendChild(this.canvas);
              this.canvas_context.moveTo(a.link.object.x, a.link.object.y)
              this.canvas_context.lineTo(a.link.target.x, a.link.target.y)
              this.canvas_context.stroke()
-             this.birthCost+=2
+             this.birthCost+=1
             }
             for(let t = 0;t<this.spines.length;t++){
                 ////console.log("S")
@@ -5503,7 +5503,7 @@ document.body.appendChild(this.canvas);
              this.canvas_context.stroke()
              
              
-             this.birthCost+=2
+             this.birthCost+=1
              this.birthCost+=(a.length/10)
             }
             for(let t = 0;t<this.eyes.length;t++){
@@ -5515,7 +5515,7 @@ document.body.appendChild(this.canvas);
              this.canvas_context.moveTo(a.link.object.x, a.link.object.y)
              this.canvas_context.lineTo(a.link.target.x, a.link.target.y)
              this.canvas_context.stroke()
-             this.birthCost+=2
+             this.birthCost+=1
              this.birthCost+=(a.length/100)
             }
             
