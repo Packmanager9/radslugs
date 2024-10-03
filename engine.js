@@ -5482,7 +5482,7 @@ document.body.appendChild(this.canvas);
              this.canvas_context.moveTo(a.link.object.x, a.link.object.y)
              this.canvas_context.lineTo(a.link.target.x, a.link.target.y)
              this.canvas_context.stroke()
-             this.birthCost+=1.5
+             this.birthCost+=2
             }
             for(let t = 0;t<this.spines.length;t++){
                 ////console.log("S")
@@ -5515,7 +5515,7 @@ document.body.appendChild(this.canvas);
              this.canvas_context.moveTo(a.link.object.x, a.link.object.y)
              this.canvas_context.lineTo(a.link.target.x, a.link.target.y)
              this.canvas_context.stroke()
-             this.birthCost++
+             this.birthCost+=2
              this.birthCost+=(a.length/100)
             }
             
@@ -5683,6 +5683,7 @@ document.body.appendChild(this.canvas);
                       if(circleLine(l, animals[k].body)==1){
                           if(animals[k].spines.length > 0){
                                 this.angle = easeAngle(this.angle, (new LineOP(this.body, animals[k].body)).angle(), this.spinrate)
+                                this.idle = 0 
                             }
                      }
                      
