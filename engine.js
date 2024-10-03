@@ -1354,12 +1354,29 @@ let recording = 0
             TIP_engine.body = TIP_engine
 //             hand.check(TIP_engine)
 
-if(start == 0){
-start = 1
-return
-}
-
-        avey.check(TIP_engine)
+// if(start == 0){
+// start = 1
+// return
+// }
+        let l = new LineOP(TIP_engine, TIP_engine)
+        
+        for(let t = 0;t<animals.length;t++){
+            l.target = animals[t].body
+            if(l.hypotenuse() < 10){
+                if(animals[t].held != 1){
+                animals[t].held = 1
+                return
+                }
+            }
+        }
+        
+        for(let t= 0;t<animals.length;t++){
+            if(animals[t].held == 1){
+                animals[t].held = 0
+                return
+            }
+        }
+//         avey.check(TIP_engine)
 
 //         scanner.stretch(TIP_engine)
             // example usage: if(object.isPointInside(TIP_engine)){ take action }
@@ -5512,6 +5529,11 @@ document.body.appendChild(this.canvas);
             this.metabolism = this.birthCost/4000 //5000
         }
         live(){
+            if(this.held == 1){
+                this.body.x = TIP_engine.x
+                this.body.y = TIP_engine.y
+                return
+            }
             this.age++
             if(this.age > 500){
                 this.maturity = 1
@@ -5916,7 +5938,27 @@ document.body.appendChild(this.canvas);
 }
 
 
+let drumz = new Audio()
+drumz.volume = .5
+drumz.src = "drumz.mp3"
+
+let mute = 0
     function main() {    
+    if(mute == 0){
+    drumz.play()
+        
+    }else{
+        
+    drumz.pause()
+    }
+        if(keysPressed['m']){
+            drumz.pause()
+            mute = 1
+        }
+        if(keysPressed['p']){
+            drumz.play()
+            mute = 0
+        }
     foodtime++
     if(foodtime > 35){ // 40
         foodtime = 0
