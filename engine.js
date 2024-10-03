@@ -5462,7 +5462,7 @@ document.body.appendChild(this.canvas);
 
 
 
-            this.birthCost = 40 // 3 //10 //36
+            this.birthCost = 30 // 3 //10 //36 //40
             this.birthCost += this.spinrate*5
             this.birthCost += this.maxhealth*3
             this.birthCost += this.spinpattern.length/10000
@@ -5482,7 +5482,7 @@ document.body.appendChild(this.canvas);
              this.canvas_context.moveTo(a.link.object.x, a.link.object.y)
              this.canvas_context.lineTo(a.link.target.x, a.link.target.y)
              this.canvas_context.stroke()
-             this.birthCost+=2
+             this.birthCost+=1.5
             }
             for(let t = 0;t<this.spines.length;t++){
                 ////console.log("S")
@@ -5503,7 +5503,7 @@ document.body.appendChild(this.canvas);
              this.canvas_context.stroke()
              
              
-             this.birthCost+=3
+             this.birthCost+=2
              this.birthCost+=(a.length/10)
             }
             for(let t = 0;t<this.eyes.length;t++){
@@ -5849,9 +5849,11 @@ document.body.appendChild(this.canvas);
             clone.speed = Math.max(0,clone.speed)
             
             for(let t = 0;t<this.armor.length;t++){
-                clone.armor.push(new Armor(this.armor[t].angle, clone))
             if(Math.random() < .05){
-                clone.armor[t].angle = clone.armor[t].angle + this.umtp()
+                clone.armor.push(new Armor(this.armor[t].angle+ this.umtp(), clone))
+            }else{
+                clone.armor.push(new Armor(this.armor[t].angle, clone))
+                
             }
             }
             if(Math.random() < .05){
@@ -5867,17 +5869,28 @@ document.body.appendChild(this.canvas);
             
             
             for(let t = 0;t<this.spines.length;t++){
-                clone.spines.push(new Spine(this.spines[t].angle,this.spines[t].length, clone))
                     if(Math.random() < .05){
-                        clone.spines[t].length += this.umte()
-                    }
                        if(Math.random() < .05){
-                clone.spines[t].angle = clone.spines[t].angle + this.umtp()
-            }
+                clone.spines.push(new Spine(this.spines[t].angle+this.umtp(),this.spines[t].length+this.umte(), clone))
+                }else{
+                    
+                clone.spines.push(new Spine(this.spines[t].angle,this.spines[t].length+this.umte(), clone))
+                }
+                
+                    }else{
+                        
+                       if(Math.random() < .05){
+
+                clone.spines.push(new Spine(this.spines[t].angle+this.umtp(),this.spines[t].length, clone))
+                }else{
+                    
+                clone.spines.push(new Spine(this.spines[t].angle,this.spines[t].length, clone))
+                }
+                    }
             }
             if(Math.random() < .05){
                 clone.spines.push(new Spine(Math.random()*Math.PI*2, clone.body.radius + (Math.random()-.5)+1, clone))
-                 ////console.log("s")
+                 ////console.log("s") 
             }
             if(Math.random() < .05){
                 clone.spines.splice(Math.floor(Math.random()*clone.spines.length),1)
@@ -5887,16 +5900,28 @@ document.body.appendChild(this.canvas);
             
             
             for(let t = 0;t<this.eyes.length;t++){
-                clone.eyes.push(new Eye(this.eyes[t].angle, this.eyes[t].length, clone))
-                    if(Math.random() < .05){
-                        clone.eyes[t].length += this.umte()
-                    }
+            
+                  if(Math.random() < .05){
                        if(Math.random() < .05){
-                clone.eyes[t].angle = clone.eyes[t].angle + this.umtp()
-            }
+                clone.eyes.push(new Eye(this.eyes[t].angle+this.umtp(),this.eyes[t].length+this.umte(), clone))
+                }else{
+                    
+                clone.eyes.push(new Eye(this.eyes[t].angle,this.eyes[t].length+this.umte(), clone))
+                }
+                
+                    }else{
+                        
+                       if(Math.random() < .05){
+
+                clone.eyes.push(new Eye(this.eyes[t].angle+this.umtp(),this.eyes[t].length, clone))
+                }else{
+                    
+                clone.eyes.push(new Eye(this.eyes[t].angle,this.eyes[t].length, clone))
+                }
+                    }
             }
             if(Math.random() < .05){
-                clone.eyes.push(new Eye(Math.random()*Math.PI*2, clone.body.radius + (Math.random()-.5) + 2, clone))
+                clone.eyes.push(new Eye(Math.random()*Math.PI*2, clone.body.radius + (Math.random()-.5) + 6, clone))
                  ////console.log("e")
             }
             if(Math.random() < .05){
