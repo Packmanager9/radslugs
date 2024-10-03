@@ -5802,7 +5802,10 @@ document.body.appendChild(this.canvas);
                 }
             }
                 if(Math.random() <.05){
-                    clone.spinpattern.push(this.umtp())
+                    clone.spinpattern.splice(Math.floor(Math.random()*clone.spinpattern.length), 0, this.umtp())
+                }
+                if(Math.random() <.05){
+                    clone.spinpattern.splice(Math.floor(Math.random()*clone.spinpattern.length),1)
                 }
             clone.spincycleson = this.spincycleson
             clone.spincyclesoff = this.spincyclesoff
