@@ -3,6 +3,7 @@
 
 let gamespeed = 1
 let mutationRate = .25
+let smallMutationRate = .05
 let hugeMutationRate = .025
 let colorMutationRate = .75
 let tankmax = 1280
@@ -6140,17 +6141,17 @@ f.appendChild(this.canvas);
 //             clone.speed = Math.max(0,clone.speed)
             
             for(let t = 0;t<this.armor.length;t++){
-           if(Math.random() < mutationRate){
-                       if(Math.random() < mutationRate){
-                clone.armor.push(new Armor(this.armor[t].angle+this.umtp(), clone,this.armor[t].width+this.umtt()))
+           if(Math.random() < smallMutationRate){
+                       if(Math.random() < smallMutationRate){
+                clone.armor.push(new Armor(this.armor[t].angle+this.umtp(), clone,this.armor[t].width+this.umte()))
                 }else{
                     
-                clone.armor.push(new Armor(this.armor[t].angle, clone, this.armor[t].width+this.umtt()))
+                clone.armor.push(new Armor(this.armor[t].angle, clone, this.armor[t].width+this.umte()))
                 }
                 
                     }else{
                         
-                       if(Math.random() < mutationRate){
+                       if(Math.random() < smallMutationRate){
 
                 clone.armor.push(new Armor(this.armor[t].angle+this.umtp(),clone,this.armor[t].width))
                 }else{
@@ -6172,17 +6173,17 @@ f.appendChild(this.canvas);
             
             
             for(let t = 0;t<this.spines.length;t++){
-                    if(Math.random() < mutationRate){
-                       if(Math.random() < mutationRate){
-                clone.spines.push(new Spine(this.spines[t].angle+this.umtp(),this.spines[t].length+this.umtt(), clone))
+                    if(Math.random() < smallMutationRate){
+                       if(Math.random() < smallMutationRate){
+                clone.spines.push(new Spine(this.spines[t].angle+this.umtp(),this.spines[t].length+this.umte(), clone))
                 }else{
                     
-                clone.spines.push(new Spine(this.spines[t].angle,this.spines[t].length+this.umtt(), clone))
+                clone.spines.push(new Spine(this.spines[t].angle,this.spines[t].length+this.umte(), clone))
                 }
                 
                     }else{
                         
-                       if(Math.random() < mutationRate){
+                       if(Math.random() < smallMutationRate){
 
                 clone.spines.push(new Spine(this.spines[t].angle+this.umtp(),this.spines[t].length, clone))
                 }else{
@@ -6207,8 +6208,8 @@ f.appendChild(this.canvas);
             
             
             for(let t = 0;t<this.tails.length;t++){
-                    if(Math.random() < mutationRate){
-                       if(Math.random() < mutationRate){
+                    if(Math.random() < smallMutationRate){
+                       if(Math.random() < smallMutationRate){
                 clone.tails.push(new Tail(this.tails[t].angle+this.umtp(),this.tails[t].length+this.umtt(), clone))
                 }else{
                     
@@ -6217,7 +6218,7 @@ f.appendChild(this.canvas);
                 
                     }else{
                         
-                       if(Math.random() < mutationRate){
+                       if(Math.random() < smallMutationRate){
 
                 clone.tails.push(new Tail(this.tails[t].angle+this.umtp(),this.tails[t].length, clone))
                 }else{
@@ -6238,17 +6239,17 @@ f.appendChild(this.canvas);
             
             for(let t = 0;t<this.eyes.length;t++){
             
-                  if(Math.random() < mutationRate){
-                       if(Math.random() < mutationRate){
-                clone.eyes.push(new Eye(this.eyes[t].angle+this.umtp(),this.eyes[t].length+this.umtt(), clone))
+                  if(Math.random() < smallMutationRate){
+                       if(Math.random() < smallMutationRate){
+                clone.eyes.push(new Eye(this.eyes[t].angle+this.umtp(),this.eyes[t].length+this.umte(), clone))
                 }else{
                     
-                clone.eyes.push(new Eye(this.eyes[t].angle,this.eyes[t].length+this.umtt(), clone))
+                clone.eyes.push(new Eye(this.eyes[t].angle,this.eyes[t].length+this.umte(), clone))
                 }
                 
                     }else{
                         
-                       if(Math.random() < mutationRate){
+                       if(Math.random() < smallMutationRate){
 
                 clone.eyes.push(new Eye(this.eyes[t].angle+this.umtp(),this.eyes[t].length, clone))
                 }else{
@@ -6258,7 +6259,7 @@ f.appendChild(this.canvas);
                     }
             }
             if(Math.random() < hugeMutationRate){
-                clone.eyes.push(new Eye(Math.random()*Math.PI*2,  (Math.random()-.5) + 6, clone))
+                clone.eyes.push(new Eye(Math.random()*Math.PI*2,  (Math.random()-.5) + 8, clone))
                  ////console.log("e")
             }
             if(Math.random() < hugeMutationRate){
@@ -6440,11 +6441,15 @@ let mute = 0
             mutationRate *= 1.01
             hugeMutationRate *= 1.01
             colorMutationRate *= 1.01
+            smallMutationRate *= 1.01
+            if(smallMutationRate > .15){
+                smallMutationRate = .15
+            }
             if(hugeMutationRate > .1){
                 hugeMutationRate = .1
             }
-            if(mutationRate > 1){
-                mutationRate  = 1
+            if(mutationRate > .25){
+                mutationRate  = .25
             }
             if(colorMutationRate > 1){
                 colorMutationRate  = 1
@@ -6454,14 +6459,18 @@ let mute = 0
             mutationRate /= 1.01
             hugeMutationRate /= 1.01
             colorMutationRate /= 1.01
+            smallMutationRate /= 1.01
             if(hugeMutationRate < .0001){
                 hugeMutationRate = .0001
             }
-            if(mutationRate < .001){
-                mutationRate = .001
+            if(mutationRate < .05){
+                mutationRate = .05
             }
             if(colorMutationRate < .1){
                 colorMutationRate  = .1
+            }
+            if(smallMutationRate < .01){
+                smallMutationRate  = .01
             }
         }
         
