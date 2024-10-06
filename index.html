@@ -2,10 +2,36 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-  </head>
-<body style="background-color:black;">
-  <div id="dog-image-container">
-    <canvas id="canvas" width="1280" height="1280" class="canvas"></canvas>
-<!--     <canvas id="mag" width="720" height="720" class="canvas"></canvas> -->
-    <script src="engine.js"></script>
-</html>
+  <style>
+  .canvas {
+  padding: 0;
+  margin: 0;
+  display: block;
+  border: none; 
+  width: 61.8vw; 
+  height: 61.8vw; 
+  overflow-x: hidden;
+  overflow-y: auto;  
+}
+#wrapper {
+  display: flex;      
+  width: 100%;            
+  height: 100vh;             
+}
+#canvas {
+  flex: 1;
+  margin-right: 0px; /* Adjust spacing as needed */
+}
+#canvasContainer {
+  width: 39.2vw;
+  height: 61.8vw;
+  overflow-y: scroll; /* Enable vertical scrolling */
+  border: 1px solid #ccc;
+}
+</style></head>
+<div id="wrapper">
+<body style="background-color:black;"><canvas id="canvas" width="1280" height="1280" class="canvas"></canvas>
+  <div id="canvasContainer"></div><script src="engine.js"></script>
+  
+</div>
+  </html>
